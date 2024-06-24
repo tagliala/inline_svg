@@ -246,11 +246,6 @@ Style/EachWithObject:
     - 'lib/inline_svg/transform_pipeline/transformations.rb'
 
 # This cop supports safe autocorrection (--autocorrect).
-Style/Encoding:
-  Exclude:
-    - 'inline_svg.gemspec'
-
-# This cop supports safe autocorrection (--autocorrect).
 Style/ExpandPathArguments:
   Exclude:
     - 'inline_svg.gemspec'
