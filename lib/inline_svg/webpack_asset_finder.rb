@@ -6,21 +6,30 @@ module InlineSvg
 
     def initialize(filename)
       @filename = filename
-      manifest_lookup = Webpacker.manifest.lookup(@filename)
+      manifest_lookup = wrapper.manifest.lookup(@filename)
       @asset_path =  manifest_lookup.present? ? URI(manifest_lookup).path : ""
     end
 
     def pathname
       return if @asset_path.blank?
 
-      if Webpacker.dev_server.running?
+      if wrapper.dev_server.running?
         dev_server_asset(@asset_path)
-      elsif Webpacker.config.public_path.present?
-        File.join(Webpacker.config.public_path, @asset_path)
+      elsif wrapper.config.public_path.present?
+        File.join(wrapper.config.public_path, @asset_path)
       end
     end
 
     private
+
+    def wrapper
+      @wrapper ||=
+        if defined?(::Shakapacker)
+          ::Shakapacker
+        else
+          ::Webpacker
+        end
+    end
 
     def dev_server_asset(file_path)
       asset = fetch_from_dev_server(file_path)
@@ -38,8 +47,8 @@ module InlineSvg
     end
 
     def fetch_from_dev_server(file_path)
-      http = Net::HTTP.new(Webpacker.dev_server.host, Webpacker.dev_server.port)
-      http.use_ssl = Webpacker.dev_server.https?
+      http = Net::HTTP.new(wrapper.dev_server.host, wrapper.dev_server.port)
+      http.use_ssl = wrapper.dev_server.protocol == "https"
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
       http.request(Net::HTTP::Get.new(file_path)).body
