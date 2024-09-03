@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 
-Nothing.
+- Drop Support for Webpacker and Legacy Rails.  [#163](https://github.com/jamesmartin/inline_svg/pull/163).
 
 ## [1.10.0] - 2024-09-03
 ### Added
