@@ -24,11 +24,10 @@ module InlineSvg::TransformPipeline::Transformations
   end
 
   def self.magnify_priorities(transforms)
-    transforms.inject({}) do |output, (name, definition)|
+    transforms.each_with_object({}) do |(name, definition), output|
       priority = definition.fetch(:priority, built_in_transformations.size)
 
       output[name] = definition.merge({ priority: magnify(priority) })
-      output
     end
   end
 
@@ -65,7 +64,7 @@ module InlineSvg::TransformPipeline::Transformations
   def self.all_default_values
     custom_transformations
       .values
-      .select { |opt| opt[:default_value] != nil }
+      .reject { |opt| opt[:default_value].nil? }
       .map { |opt| [opt[:attribute], opt[:default_value]] }
       .inject({}) { |options, attrs| options.merge!(attrs[0] => attrs[1]) }
   end
