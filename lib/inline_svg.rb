@@ -81,7 +81,7 @@ module InlineSvg
     private
 
     def incompatible_transformation?(klass)
-      !klass.is_a?(Class) || !klass.respond_to?(:create_with_value) || !klass.instance_methods.include?(:transform)
+      !klass.is_a?(Class) || !klass.respond_to?(:create_with_value) || !klass.method_defined?(:transform)
     end
   end
 

@@ -12,7 +12,7 @@ class WorkingCustomTransform < InlineSvg::CustomTransformation
 end
 
 RSpec.describe InlineSvg::ActionView::Helpers do
-  let(:helper) { (Class.new { include InlineSvg::ActionView::Helpers }).new }
+  let(:helper) { Class.new { include InlineSvg::ActionView::Helpers }.new }
 
   shared_examples "inline_svg helper" do |helper_method:|
     after do

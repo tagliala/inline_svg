@@ -18,9 +18,9 @@ jobs:
     timeout-minutes: 20
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Checkout test app
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         repository: jamesmartin/inline_svg_test_app
         ref: ${{ matrix.test-branch }}
@@ -48,7 +48,7 @@ jobs:
         cd $GITHUB_WORKSPACE/test_app
         bundle install --jobs 4 --retry 3
     - name: Set up Node.js 20.x
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: 20
       if: matrix.test-branch == 'rails7-shakapacker'
