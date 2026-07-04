@@ -22,7 +22,7 @@ jobs:
     - name: Checkout test app
       uses: actions/checkout@v7
       with:
-        repository: jamesmartin/inline_svg_test_app
+        repository: tagliala/inline_svg_test_app
         ref: ${{ matrix.test-branch }}
         path: test_app
     - name: Set up Ruby
