@@ -3,9 +3,7 @@
 if ENV.fetch('COVERAGE', false)
   require 'simplecov'
 
-  SimpleCov.start do
-    add_filter %r{^/spec/}
-  end
+  SimpleCov.start
 end
 
 require 'inline_svg'

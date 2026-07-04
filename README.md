@@ -11,7 +11,7 @@ embedding](http://css-tricks.com/using-svg/) it inline in the HTML.
 This gem adds Rails helper methods (`inline_svg_tag` and `inline_svg_pack_tag`) that read an SVG document (via Sprockets or Shakapacker, so works with the Rails Asset Pipeline), applies a CSS class attribute to the root of the document and
 then embeds it into a view.
 
-Inline SVG supports Rails 7.x with Propshaft, Sprockets, or Shakapacker
+Inline SVG supports Rails 7.2 and 8.x with Propshaft, Sprockets, or Shakapacker
 
 ## Changelog
 

@@ -19,8 +19,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.metadata['rubygems_mfa_required'] = 'true'
-  spec.required_ruby_version = '>= 3.1'
+  spec.required_ruby_version = '>= 3.2'
 
-  spec.add_dependency "activesupport", ">= 7.0"
+  spec.add_dependency "activesupport", ">= 7.2"
   spec.add_dependency "nokogiri", ">= 1.16"
 end
